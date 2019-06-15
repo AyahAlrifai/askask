@@ -9,7 +9,15 @@ def home(request):
     context={'posts':post.objects.all(),'title':'home','users':users,'steel':'steel_home'}
     return render(request,'blog/home.html',context)
 
+def countries_view(request):
+    if request.method='POST':
+        form=CountryForm(request.POST)
+        if form.is_valid():
+            countries=form.cleaned_data.get('countries')
 
+        else:
+            form=CountryForm 
+        return render_to_response('post.html',{form:'form'},context_instance=RequestContext(request))
 class PostListView(ListView):
     model = post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
