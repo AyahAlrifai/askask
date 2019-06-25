@@ -6,8 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin,U
 
 def home(request):
     users=User.objects.all()
-    #order_by('-date_posted')
-    context={'posts':post.objects.all(),'title':'home','users':users,'steel':'steel_home'}
+    #
+    context={'posts':post.objects.order_by('-date_posted'),'title':'home','users':users,'steel':'steel_home'}
     return render(request,'blog/home.html',context)
 
 class PostListView(ListView):
