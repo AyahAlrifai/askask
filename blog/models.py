@@ -8,8 +8,7 @@ class post(models.Model):
     contant = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    #OPTIONS=(("pub","public"))
-    #public=models.MultipleChoiseField(widget=forms.CheckboxSelectMultiple,choices=OPTIONS)
+    public=models.TextField()
 
     def __str__(self):
         return self.title
